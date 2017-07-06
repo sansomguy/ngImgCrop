@@ -100,7 +100,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         //theArea.setXSize(Math.min(200, ctx.canvas.width/2));
         theArea.setYSize(ctx.canvas.height*0.8);
         theArea.setXSize(theArea.getYSize()*(aspectRatio?  aspectRatio : 1));
-        theArea.setAsepectRatio(aspectRatio)
+        theArea.setAspectRatio(aspectRatio)
         
       } else {
         elCanvas.prop('width',0).prop('height',0).css({'margin-top': 0});

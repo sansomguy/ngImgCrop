@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Alex Kaul
  * License: MIT
  *
- * Generated at Thursday, July 6th, 2017, 3:30:32 PM
+ * Generated at Thursday, July 6th, 2017, 4:57:40 PM
  */
 (function() {
 'use strict';
@@ -1554,7 +1554,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         //theArea.setXSize(Math.min(200, ctx.canvas.width/2));
         theArea.setYSize(ctx.canvas.height*0.8);
         theArea.setXSize(theArea.getYSize()*(aspectRatio?  aspectRatio : 1));
-        theArea.setAsepectRatio(aspectRatio)
+        theArea.setAspectRatio(aspectRatio)
         
       } else {
         elCanvas.prop('width',0).prop('height',0).css({'margin-top': 0});

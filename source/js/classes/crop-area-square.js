@@ -186,6 +186,7 @@ crop.factory('cropAreaSquare', ['cropArea', function(CropArea) {
     }
 
     this._dontDragOutside();
+    this._respectAspectRatio();
     angular.element(this._ctx.canvas).css({'cursor': cursor});
 
     return res;

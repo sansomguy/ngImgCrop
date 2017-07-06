@@ -89,7 +89,11 @@ crop.directive('imgCrop', ['$timeout', 'cropHost', 'cropPubSub', function($timeo
       });
       scope.$watch('resultImageSize',function(){
         try{
-          cropHost.setResultImageSize(JSON.parse(scope.resultImageSize));
+          var obj = scope.resultImageSize;
+          if(scope.resultImageSize && typeof scope.resultImageSize === 'string'){
+            obj = JSON.parse(scope.resultImageSize);
+          }
+          cropHost.setResultImageSize(obj);
           updateResultImage(scope);
         }catch(e){
           console.error("Invalid result image size format", e);

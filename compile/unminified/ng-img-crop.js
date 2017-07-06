@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Alex Kaul
  * License: MIT
  *
- * Generated at Thursday, July 6th, 2017, 1:56:26 PM
+ * Generated at Thursday, July 6th, 2017, 3:30:32 PM
  */
 (function() {
 'use strict';
@@ -369,6 +369,7 @@ crop.factory('cropAreaSquare', ['cropArea', function(CropArea) {
     }
 
     this._dontDragOutside();
+    this._respectAspectRatio();
     angular.element(this._ctx.canvas).css({'cursor': cursor});
 
     return res;
@@ -1551,8 +1552,9 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         theArea.setY(ctx.canvas.height/2);
         //theArea.setYSize(Math.min(200/aspectRatio, (ctx.canvas.width/2)/aspectRatio));
         //theArea.setXSize(Math.min(200, ctx.canvas.width/2));
-        theArea.setYSize(100);
-        theArea.setXSize(100);
+        theArea.setYSize(resImgSize.h);
+        theArea.setXSize(resImgSize.w);
+        theArea.setAsepectRatio(aspectRatio)
         
       } else {
         elCanvas.prop('width',0).prop('height',0).css({'margin-top': 0});
@@ -1963,7 +1965,11 @@ crop.directive('imgCrop', ['$timeout', 'cropHost', 'cropPubSub', function($timeo
       });
       scope.$watch('resultImageSize',function(){
         try{
-          cropHost.setResultImageSize(JSON.parse(scope.resultImageSize));
+          var obj = scope.resultImageSize;
+          if(scope.resultImageSize && typeof scope.resultImageSize === 'string'){
+            obj = JSON.parse(scope.resultImageSize);
+          }
+          cropHost.setResultImageSize(obj);
           updateResultImage(scope);
         }catch(e){
           console.error("Invalid result image size format", e);

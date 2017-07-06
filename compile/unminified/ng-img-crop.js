@@ -1552,8 +1552,8 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         theArea.setY(ctx.canvas.height/2);
         //theArea.setYSize(Math.min(200/aspectRatio, (ctx.canvas.width/2)/aspectRatio));
         //theArea.setXSize(Math.min(200, ctx.canvas.width/2));
-        theArea.setYSize(resImgSize.h);
-        theArea.setXSize(resImgSize.w);
+        theArea.setYSize(ctx.canvas.height*0.8);
+        theArea.setXSize(theArea.getYSize()*(aspectRatio?  aspectRatio : 1));
         theArea.setAsepectRatio(aspectRatio)
         
       } else {
